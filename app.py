@@ -40,7 +40,7 @@ def login():
         "email"  : user["email"],
         "name"   : user.get("name", ""),
         "id"     : user.get("id", ""),
-        "role"   : user.get("role", "user")  # ✅ dynamic role (default to 'user')
+        "role"   : user.get("role", "user")  # dynamic role (default to 'user')
     }), 200
 
 # ── helper: compute HHh MMm between two datetimes ──────────────
@@ -53,10 +53,10 @@ def calc_hours(start: datetime, end: datetime) -> str:
 @app.route("/api/attendance", methods=["POST"])
 def mark_attendance():
     data    = request.get_json(force=True)
-    user_id = data.get("id")           # 👈 required
-    name    = data.get("name")         # 👈 required
-    email   = data.get("email")        # 👈 required
-    dept    = data.get("department", "Unknown")  # 👈 optional, if passed
+    user_id = data.get("id")           # required
+    name    = data.get("name")         # required
+    email   = data.get("email")        # required
+    dept    = data.get("department", "Unknown")  # optional, if passed
     mode    = data.get("mode", "in")   # "in" | "out"
 
     if not name or not email or not user_id:
@@ -83,7 +83,7 @@ def mark_attendance():
             }},
             upsert=True
         )
-        return jsonify({"message": "✅ check‑in saved"}), 200
+        return jsonify({"message": "check‑in saved"}), 200
 
     if mode == "out":
         rec = col_att.find_one({"email": email, "date": today})
@@ -98,7 +98,7 @@ def mark_attendance():
                 "workHours": work
             }}
         )
-        return jsonify({"message": "✅ check‑out saved"}), 200
+        return jsonify({"message": "check‑out saved"}), 200
 
     return jsonify({"error": "mode must be 'in' or 'out'"}), 400
 
@@ -123,7 +123,7 @@ def leave_request():
     if not all(field in data for field in required_fields):
         return jsonify({"error": "Missing fields"}), 400
 
-    # ✅ Normalize all dates to same format
+    #  Normalize all dates to same format
     normalized_dates = sorted({
         datetime.strptime(d, "%Y/%m/%d").strftime("%Y/%m/%d")
         for d in data["dates"]
@@ -164,7 +164,7 @@ def leave_usage():
             "status": {"$ne": "Rejected"}
         })
 
-        # ✅ Normalize before adding to set
+        #  Normalize before adding to set
         all_dates = {
             datetime.strptime(d, "%Y/%m/%d").strftime("%Y/%m/%d")
             for req in requests
@@ -177,63 +177,6 @@ def leave_usage():
         }
 
     return jsonify(usage), 200
-
-# ── GET /api/leave-history?email=... ──────────────────────────
-# @app.route("/api/leave-history", methods=["GET"])
-# def get_leave_history():
-#     email = request.args.get("email")
-#     if not email:
-#         return jsonify({"error": "Email is required"}), 400
-
-#     records = list(leave_collection.find({"email": email}))
-
-#     # Line Chart: Count each leave day
-#     from collections import defaultdict
-#     daily_count = defaultdict(int)
-
-#     for r in records:
-#         try:
-#             start = datetime.strptime(r["startDate"], "%Y-%m-%d")
-#             end = datetime.strptime(r["endDate"], "%Y-%m-%d")
-#             days = (end - start).days + 1
-#             for i in range(days):
-#                 day = (start + timedelta(days=i)).strftime("%Y-%m-%d")
-#                 daily_count[day] += 1
-#         except:
-#             continue
-
-#     line_data = [
-#         {"date": datetime.strptime(d, "%Y-%m-%d").strftime("%d %b"), "percent": min(100, c * 20)}
-#         for d, c in sorted(daily_count.items())
-#     ]
-
-#     # Bar Chart: Count by leave type
-#     type_count = defaultdict(int)
-#     for r in records:
-#         try:
-#             lt = r.get("type", "Unknown")
-#             start = datetime.strptime(r["startDate"], "%Y-%m-%d")
-#             end = datetime.strptime(r["endDate"], "%Y-%m-%d")
-#             days = (end - start).days + 1
-#             type_count[lt] += days
-#         except:
-#             continue
-
-#     bar_data = [
-#         {"name": t.replace(" Leave", ""), "percent": min(100, c * 20)}
-#         for t, c in type_count.items()
-#     ]
-
-#     return jsonify({
-#         "lineChart": line_data,
-#         "barChart": bar_data
-#     }), 200
-
-
-
-
-
-
 
 @app.route("/api/user/attendance-overview", methods=["GET"])
 def user_attendance_overview():
@@ -271,7 +214,7 @@ def user_attendance_overview():
         except:
             continue
 
-        # ✅ Skip records older than 7 days
+        # Skip records older than 7 days
         if date_obj < start_date:
             continue
 
@@ -331,11 +274,6 @@ def user_attendance_overview():
             "total": len(daily_hours)  # Only recent days count
         }
     }), 200
-
-
-
-# overview
-
 
 # ── GET /api/admin/attendance-overview ────────
 @app.route("/api/admin/attendance-overview", methods=["GET"])
@@ -422,7 +360,7 @@ def admin_attendance_data():
         except Exception as e:
             print("Error processing record:", e)
 
-    # ✅ Line chart: average hours per day
+    # Line chart: average hours per day
     line_data = []
     for date_str in last_7_days:
         hours_val = daily_hours_sum.get(date_str, 0)
@@ -435,7 +373,7 @@ def admin_attendance_data():
             "expectedHours": EXPECTED_HOURS
         })
 
-    # ✅ Bar chart: average hours per employee
+    # Bar chart: average hours per employee
     bar_data = []
     for emp_id in sorted(employee_ids):
         days_present = len(employee_days_present.get(emp_id, set())) or 1
