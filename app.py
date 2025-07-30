@@ -4,7 +4,7 @@ from pymongo import MongoClient
 from datetime import datetime, timedelta
 from collections import defaultdict
 
-# ── Flask + CORS ───────────────────────────────────────────────
+# ── Flask + CORS ──────────────────────────────────────────────
 app = Flask(__name__)
 CORS(app)
 
