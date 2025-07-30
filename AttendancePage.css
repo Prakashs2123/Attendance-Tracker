@@ -1,0 +1,57 @@
+.attendance-container {
+  padding: 40px;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+.login-box, .info-box {
+  max-width: 400px;
+  margin: auto;
+  background: #f4f4f4;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 12px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  background: #007bff;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.mark-btn {
+  background-color: #28a745;
+}
+
+.mark-btn:hover {
+  background-color: #218838;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}

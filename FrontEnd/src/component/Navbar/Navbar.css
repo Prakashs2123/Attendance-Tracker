@@ -1,0 +1,38 @@
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 180px;
+  height: calc(100vh - 60px);
+  background-color: #1e1e1e;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.nav-link {
+  padding: 15px 20px;
+  text-decoration: none;
+  color: white;
+  background-color: #1e1e1e;
+  text-align: center;
+  font-size: 18px;
+  border: 1px solid white;
+
+}
+
+.nav-link:hover {
+  background-color: #333;
+}
+
+/* Push the last nav-link (Logout) to the bottom */
+.nav-link:last-child {
+  margin-top: auto;
+}

@@ -1,0 +1,311 @@
+/* ───────── GENERAL ───────── */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f7fb;
+  margin: 0;
+  padding: 20px;
+  color: #1f2937;
+}
+
+.dashboard,
+.user-dashboard {
+  /* admin & user roots */
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ───────── TOP‑ROW WRAPPER ───────── */
+.top-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ───────── CLOCK BOX ───────── */
+.clock-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  width: 240px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.clock-box h2 {
+  margin: 0;
+  font-size: 28px;
+  color: #3366ff;
+}
+
+.clock-box .date {
+  font-size: 14px;
+  color: #555;
+}
+
+.view-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #3366ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.view-btn:hover {
+  background: #254edb;
+}
+
+/* ───────── LEAVE CARDS (user) ───────── */
+.leave-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  flex: 1;
+}
+
+.leave-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .03);
+  display: flex;
+  align-items: center;
+  transition: transform .2s;
+}
+
+.leave-card:hover {
+  transform: translateY(-4px);
+}
+
+.leave-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.circle {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.leave-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.leave-details h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.leave-details p {
+  margin: 0;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* ───────── ADMIN STAT CARDS ───────── */
+.stat-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  flex: 1;
+}
+
+.stat-card {
+  flex: 1 1 180px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 180px;
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-card .icon {
+  font-size: 20px;
+  color: #3366ff;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #333;
+}
+
+.note {
+  font-size: 13px;
+}
+
+.note.green {
+  color: #10b981;
+}
+
+.note.red {
+  color: #ef4444;
+}
+
+.note.blue {
+  color: #3b82f6;
+}
+
+/* ───────── CHARTS (shared) ───────── */
+
+.chart-section,
+.charts {
+  /* admin (.chart-section)  & user (.charts)  */
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.chart-box,
+.line-chart,
+.bar-chart {
+  background: #fff;
+  border-radius: 16px;
+  /* padding: 16px; */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
+  flex: 1;
+  /* min-width: 320px; */
+}
+
+.chart-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.line-chart {
+  flex:60%;
+
+  
+}
+
+.bar-chart {
+  flex:35%;
+  
+}
+
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.chart-header h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.toggle {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.toggle span {
+  color: #aaa;
+}
+
+.toggle .active {
+  color: #dadde7;
+  font-weight: 600;
+}
+
+/* ───────── TABLE (shared) ───────── */
+.table-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.table-header h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.date-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f1f5f9;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1f2937;
+}
+
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.attendance-table th,
+.attendance-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.blue-text {
+  color: #3366ff;
+  font-weight: 500;
+}
+
+.red-text {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.yellow-text {
+  color: #f59e0b;
+  font-weight: 500;
+}
+
+.pagination {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #6b7280;
+}

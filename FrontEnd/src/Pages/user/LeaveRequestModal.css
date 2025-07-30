@@ -1,0 +1,166 @@
+/* Modal overlay and box */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.leave-modal {
+  background: #fff;
+  width: 400px;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Modal header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #3366ff;
+  cursor: pointer;
+}
+
+/* Form layout: label left, input right */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.modal-form label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #444;
+  gap: 10px;
+}
+
+
+.modal-form label span {
+  flex: 1;
+}
+
+.modal-form select,
+.modal-form input[type="date"],
+.modal-form textarea {
+  flex: 1;
+  padding: 10px;
+  border: 1.5px solid #cfd8e3;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  margin-left: 12px;
+
+}
+.modal-form select{
+  margin-left: 31px;
+}
+
+/* Calendar icon inside input */
+.input-with-icon {
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icon input {
+  flex: 1;
+}
+
+.input-with-icon svg {
+  margin-left: 8px;
+  color: #3366ff;
+}
+
+/* Textarea full width */
+textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* Done button */
+.done-btn {
+  margin-top: 10px;
+  background-color: #3366ff;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.done-btn:hover {
+  background-color: #254edb;
+}
+
+
+
+
+/* Date Row Container */
+.date-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+
+}
+
+/* Date Label */
+.date-row label {
+  min-width: 60px;
+  
+}
+
+/* Calendar Box Styled Like an Input */
+.date-calendar {
+  /* flex: 1; */
+  width: 100%;
+  border: 1.5px solid #cfd8e3;
+  border-radius: 8px;
+  background: #fff;
+  padding: 8px 22px;
+  font-size: 14px;
+  min-height: 38px; /* same height as select */
+  display: flex;
+  align-items: center;
+  color: blue;
+  
+}
+.icon span{
+  padding: 12px;
+  /* color: blue; */
+  font-size: 20px;
+  
+}
+
+/* On hover/focus match select focus */
+.date-calendar:focus-within,
+.date-calendar:hover {
+
+  border-color: #f0f1f5;
+  box-shadow: 0 0 0 2px rgba(51, 102, 255, 0.15);
+}
